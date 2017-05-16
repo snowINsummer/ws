@@ -1,0 +1,16 @@
+{
+  "wsInfo":{
+    "url":"${url}",
+    "Request-Tyoe":"${Request-Tyoe}"
+  },
+  "headers":{
+    "clientId":"${clientId}",
+    "clientTime":"${clientTime}",
+    "s":"${s}"
+  },
+  "id":"${id}",
+  "caseInfo":{
+    "sql":"${sql}",
+    "expect":"${expect}"
+  }
+}
