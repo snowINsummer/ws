@@ -31,6 +31,8 @@ public class ExcelData {
 
     private String jsonTemplateFilePath = "";
 
+    private String className = "";
+
     private Workbook excelBook = null;
 
     private LinkedList<Map<String,Object>> caseInfo = new LinkedList<>();
@@ -48,6 +50,7 @@ public class ExcelData {
 
         String excelFile = xlFilePath + path;
         String className = classFullPath;
+        this.className = className;
         int dotNum = className.indexOf(".");
         if (dotNum > 0) {
             className = className.substring(className.lastIndexOf(".") + 1,
@@ -106,6 +109,14 @@ public class ExcelData {
                             String value = getValue(apiSheet, j, i++);
                             if (null == value){
                                 value = "";
+                            }else if(RegExp.findCharacters(value,"^random\\(\\d+\\)$")){
+                                String str = RegExp.filterString(value,"random\\(\\)");
+                                value = StringUtil.getFixLenthString(Integer.parseInt(str));
+
+                            }else if(RegExp.findCharacters(value,"^length\\(\\d+\\)$")){
+                                String str = RegExp.filterString(value,"length\\(\\)");
+                                value = StringUtil.createFixLenthString(Integer.parseInt(str));
+
                             }
                             singleJson = singleJson.replace("${"+key+"}",value);
                             setCheckList(checkList, key, value);
@@ -142,12 +153,14 @@ public class ExcelData {
      * @param value
      */
     private void setCheckList(CheckList checkList, String key, String value) {
-        if (key.startsWith(Parameters.CHECKLIST_SQL_KEY)){
-            key = key.replace(Parameters.CHECKLIST_SQL_KEY,"");
-            checkList.addSqlCheckList(key, value);
-        }else if(key.startsWith(Parameters.CHECKLIST_RESPONSE_KEY)){
-            key = key.replace(Parameters.CHECKLIST_RESPONSE_KEY,"");
-            checkList.addRequestList(key, value);
+        if (!value.isEmpty()){
+            if (key.startsWith(Parameters.CHECKLIST_SQL_KEY)){
+                key = key.replace(Parameters.CHECKLIST_SQL_KEY,"");
+                checkList.addSqlCheckList(key, value);
+            }else if(key.startsWith(Parameters.CHECKLIST_RESPONSE_KEY)){
+                key = key.replace(Parameters.CHECKLIST_RESPONSE_KEY,"");
+                checkList.addRequestList(key, value);
+            }
         }
     }
 
@@ -278,7 +291,8 @@ public class ExcelData {
         return requestBody;
     }
 
-    public Map<String,Object> getResponseBody() {
+    public Map<String,Object> getResponseBody() throws Exception {
+        setResponseBody(this.className);
         return responseBody;
     }
 

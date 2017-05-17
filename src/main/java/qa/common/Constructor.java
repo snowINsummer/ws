@@ -17,6 +17,7 @@ import java.util.*;
 @SuppressWarnings("unchecked")
 public class Constructor {
     private Engine engine;
+    ExcelData excelData;
     private HttpClientUtil httpClientUtil;
     private DataBaseUtil dataBaseUtil;
     private LinkedList<Map<String,Object>> caseInfo;
@@ -32,10 +33,9 @@ public class Constructor {
         engine = new Engine();
         httpClientUtil = new HttpClientUtil();
         dataBaseUtil = new DataBaseUtil(Parameters.oracleUrl,Parameters.oracleUserName,Parameters.oraclePassword);
-        ExcelData excelData = new ExcelData(excelPath, classFullPath);
+        excelData = new ExcelData(excelPath, classFullPath);
         caseInfo = excelData.getCaseInfo();
         rspBody = excelData.getRequestBody();
-        responseBody = excelData.getResponseBody();
         checkList = excelData.getCheckList();
         description = excelData.getDescription();
     }
@@ -55,12 +55,14 @@ public class Constructor {
 //        engine.log(JSONFormat.getObjectToJson(json.pop()));
 //        engine.log(responseInfo.getContent());
     }
-    public void executeCase(Object o1, Object o2, Object o3) throws HTTPException, RunException {
+    public void executeCase(Object o1, Object o2, Object o3, Object o4) throws Exception {
+        engine.log("用例描述：" + o4.toString());
         Map<String, Object> allData = (Map<String, Object>) o1;
         String rspBody =  String.valueOf(o2);
         CheckList checkList = (CheckList) o3;
         ResponseInfo responseInfo = engine.getResponseInfo(httpClientUtil, allData, rspBody);
         Map<String,Object> caseInfo = (Map<String, Object>) allData.get(Parameters.JSON_TEMPLATE_CASEINFO);
+        responseBody = excelData.getResponseBody();
         engine.assertResult(caseInfo,responseInfo, responseBody,dataBaseUtil, checkList);
 //        engine.log(JSONFormat.getObjectToJson(json.pop()));
 //        engine.log(responseInfo.getContent());

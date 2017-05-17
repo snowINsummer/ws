@@ -7,12 +7,20 @@
         <!--<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />-->
     </listeners>
 
+
+    <test name="/bids/bids" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.integrationPlatform.bids.bids" />
+        </classes>
+    </test>
+
+    <!--
     <test name="/form/forms_GET" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.forms.forms_GET" />
         </classes>
     </test>
-
+-->
     <!--
       <test name="/form/repaymentPlanTrial" junit="false" annotations="JDK">
           <classes>

@@ -119,7 +119,7 @@ public class Reporter extends ReportNGUtils implements IReporter {
 
         if (Parameters.TESTCASE_EXCEL_NAME.isEmpty()){
             // 如果为空说明是本地调试，不保存结果。
-            System.out.println("testcaseName is empty. Do not insert into db.");
+            logger.info("testcaseName is empty. Do not insert into db.");
             return;
         }
 
@@ -198,8 +198,8 @@ public class Reporter extends ReportNGUtils implements IReporter {
         Map<String,String> header = new HashMap<>();
         header.put("Content-Type", "application/json");
         try {
-//            ResponseInfo responseInfo = httpClientUtil.executePostWithHeaders("http://"+ATDBackService+"/testcase/saveResult",header,json);
-            ResponseInfo responseInfo = httpClientUtil.executePostWithHeaders("http://localhost:8080/testcase/saveResult",header,json);
+            ResponseInfo responseInfo = httpClientUtil.executePostWithHeaders("http://"+ATDBackService+"/testcase/saveResult",header,json);
+//            ResponseInfo responseInfo = httpClientUtil.executePostWithHeaders("http://localhost:8080/testcase/saveResult",header,json);
             logger.info("/testcase/saveResult rsp status:"+responseInfo.getStatus());
             logger.info("/testcase/saveResult rsp content:"+responseInfo.getContent());
             logger.info("/testcase/saveResult rsp time:"+responseInfo.getTime());

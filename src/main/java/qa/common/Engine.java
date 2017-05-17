@@ -131,7 +131,7 @@ public class Engine {
                     }
                 } else {
                     Map<String, Object> mapT = (Map<String, Object>) responseBody.get(key);
-                    insertResponseBody(mapT, String.valueOf(map.get(key)));
+                    insertResponseBody(mapT, JSONFormat.getObjectToJson(map.get(key)));
                 }
             }
         }catch (Exception e) {

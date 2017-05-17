@@ -34,7 +34,7 @@ public class forms_GET {
 
     @Test(dataProvider = "dp")
     public void case001(Object[] arrObj) throws Exception {
-        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2]);
+        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
     }
 
 //    @Test(dataProvider = "dp")
