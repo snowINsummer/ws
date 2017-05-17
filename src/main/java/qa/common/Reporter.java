@@ -122,6 +122,9 @@ public class Reporter extends ReportNGUtils implements IReporter {
         ResultData resultData = new ResultData();
         resultData.setCaseType("1");
         resultData.setProductName(Parameters.PRODUCT_NAME);
+        resultData.setProjectName(Parameters.PROJECT_NAME);
+        resultData.setModuleName(Parameters.MODULE_NAME);
+        resultData.setTestcaseName(Parameters.TESTCASE_EXCEL_NAME);
         resultData.setBatchNo(batchNo);
         List<ResultDataItemList> resultDataItemLists = new ArrayList();
 
@@ -152,9 +155,7 @@ public class Reporter extends ReportNGUtils implements IReporter {
         */
         for (ITestResult iTestResult : list) {
             ResultDataItemList resultDataItemList = new ResultDataItemList();
-            resultDataItemList.setProjectName(Parameters.PROJECT_NAME);
-            resultDataItemList.setModuleName(Parameters.MODULE_NAME);
-            resultDataItemList.setTestcaseName(Parameters.TESTCASE_EXCEL_NAME);
+
             // String xmlTestClass = iTestResult.getMethod().getTestClass().getName();
             String testcaseModuleName = iTestResult.getMethod().getXmlTest().getName(); // testcaseModuleName
             resultDataItemList.setTestcaseModuleName(testcaseModuleName);

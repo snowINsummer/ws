@@ -5,9 +5,7 @@ package qa.Entity;
  */
 public class ResultDataItemList {
 
-    private String projectName;
-    private String moduleName;
-    private String testcaseName;
+
     private String testcaseModuleName;
     private String excelNo;
     private String caseInfo;
@@ -16,30 +14,6 @@ public class ResultDataItemList {
     private String finishTime;
     private String duration;
     private String description;
-
-    public String getProjectName() {
-        return projectName;
-    }
-
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
-    }
-
-    public String getModuleName() {
-        return moduleName;
-    }
-
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
-    }
-
-    public String getTestcaseName() {
-        return testcaseName;
-    }
-
-    public void setTestcaseName(String testcaseName) {
-        this.testcaseName = testcaseName;
-    }
 
     public String getTestcaseModuleName() {
         return testcaseModuleName;

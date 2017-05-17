@@ -9,6 +9,9 @@ public class ResultData {
 
     private String caseType;
     private String productName;
+    private String projectName;
+    private String moduleName;
+    private String testcaseName;
     private String batchNo;
     private List<ResultDataItemList> itemList;
 
@@ -42,5 +45,29 @@ public class ResultData {
 
     public void setItemList(List<ResultDataItemList> itemList) {
         this.itemList = itemList;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    public String getTestcaseName() {
+        return testcaseName;
+    }
+
+    public void setTestcaseName(String testcaseName) {
+        this.testcaseName = testcaseName;
     }
 }
