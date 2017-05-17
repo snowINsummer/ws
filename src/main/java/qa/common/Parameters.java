@@ -48,6 +48,8 @@ public class Parameters {
 
     public static final String Tyrant_Service_IP = prop.getProperty("Tyrant_Service_IP","172.16.16.136:8080/tyrant");;
 
+    public static final String SUITE_XML_FILE_PATH = prop.getProperty("suiteXmlFilePath","");
+
     public static Properties getProperties() {
         Properties prop = new Properties();
         try {

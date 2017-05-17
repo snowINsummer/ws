@@ -180,7 +180,9 @@ public class ExcelData {
 
 
     private void initVar() {
-        String fileName = FileUtil.getName(this.excelPath);
+        // 根据xml路径解析项目信息，而不是根据excel路径，可能是一对多
+//        String fileName = FileUtil.getName(this.excelPath);
+        String fileName = FileUtil.getName(Parameters.SUITE_XML_FILE_PATH);
         Parameters.TESTCASE_EXCEL_NAME = fileName.split("\\.")[0];
         String tempPath = FileUtil.getParent(this.excelPath);
         Parameters.MODULE_NAME = FileUtil.getName(tempPath);
@@ -188,6 +190,12 @@ public class ExcelData {
         Parameters.PROJECT_NAME = FileUtil.getName(tempPath);
         tempPath = FileUtil.getParent(tempPath);
         Parameters.PRODUCT_NAME = FileUtil.getName(tempPath);
+/*
+        System.out.println(Parameters.TESTCASE_EXCEL_NAME);
+        System.out.println(Parameters.MODULE_NAME);
+        System.out.println(Parameters.PROJECT_NAME);
+        System.out.println(Parameters.PRODUCT_NAME);
+        */
     }
 
 
