@@ -116,6 +116,13 @@ public class Reporter extends ReportNGUtils implements IReporter {
      * @param list 测试结果信息
      */
     private void saveResult(List<ITestResult> list) {
+
+        if (Parameters.TESTCASE_EXCEL_NAME.isEmpty()){
+            // 如果为空说明是本地调试，不保存结果。
+            System.out.println("testcaseName is empty. Do not insert into db.");
+            return;
+        }
+
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date());
         String batchNo = date; // batchNo
         Result result = new Result();
