@@ -1,4 +1,4 @@
-package qa.webservice.xxd.tiandun.integrationPlatform.bids;
+package qa.webservice.xxd.tiandun.integrationPlatform.bidsT;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -73,6 +73,16 @@ public class bids {
 
     @Test(dataProvider = "dp")
     public void case009(Object[] arrObj) throws Exception {
+        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
+    }
+
+    @Test(dataProvider = "dp")
+    public void case010(Object[] arrObj) throws Exception {
+        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
+    }
+
+    @Test(dataProvider = "dp")
+    public void case011(Object[] arrObj) throws Exception {
         constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
     }
 

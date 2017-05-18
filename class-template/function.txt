@@ -1,0 +1,5 @@
+
+    @Test(dataProvider = "dp")
+    public void case${no}(Object[] arrObj) throws Exception {
+        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
+    }

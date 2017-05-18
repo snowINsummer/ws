@@ -27,7 +27,7 @@ public class ExcelData {
 
     private int startRow = 3;
 
-    public static String excelPath = "";
+    private String excelPath = "";
 
     private String jsonTemplateFilePath = "";
 
@@ -70,7 +70,7 @@ public class ExcelData {
     }
 
     private void getExcelData(String className, String classFullPath) throws Exception {
-        initVar();
+        initVar("");
         setJsonTemplateFilePath(classFullPath);
         openExcelTestCase(this.excelPath);
 
@@ -119,7 +119,9 @@ public class ExcelData {
                                 value = StringUtil.createFixLenthString(Integer.parseInt(str));
                             }else if(value.toLowerCase().equals("null")){
                                 value = "";
-                                target = key + "=" + target;
+                                if (singleJson.contains(key + "=" + target)){
+                                    target = key + "=" + target;
+                                }
                             }
                             singleJson = singleJson.replace(target ,value);
                             setCheckList(checkList, key, value);
@@ -177,7 +179,7 @@ public class ExcelData {
                 Parameters.PRODUCT_NAME + File.separator +
                 Parameters.PROJECT_NAME + File.separator +
                 Parameters.MODULE_NAME + File.separator +
-                arrClass[arrClass.length-2] + File.separator +
+//                arrClass[arrClass.length-2] + File.separator +
                 arrClass[arrClass.length-1] + ".json";
 
     }
@@ -188,19 +190,23 @@ public class ExcelData {
                 Parameters.PRODUCT_NAME + File.separator +
                 Parameters.PROJECT_NAME + File.separator +
                 Parameters.MODULE_NAME + File.separator +
-                arrClass[arrClass.length - 2] + File.separator +
+//                arrClass[arrClass.length - 2] + File.separator +
                 arrClass[arrClass.length - 1] + "-responseBody.json";
         String text = FileUtil.readFile(reponseBodyFilePath);
         responseBody = JSONFormat.getMapFromJson(text);
     }
 
 
-    private void initVar() {
+    public void initVar(String excelPath) {
         // 根据xml路径解析项目信息，而不是根据excel路径，可能是一对多
 //        String fileName = FileUtil.getName(this.excelPath);
-        String fileName = FileUtil.getName(Parameters.SUITE_XML_FILE_PATH);
+        if (excelPath.isEmpty()){
+            excelPath = Parameters.SUITE_XML_FILE_PATH;
+        }
+        String fileName = FileUtil.getName(excelPath);
         Parameters.TESTCASE_EXCEL_NAME = fileName.split("\\.")[0];
-        String tempPath = FileUtil.getParent(this.excelPath);
+//        String tempPath = FileUtil.getParent(this.excelPath);
+        String tempPath = FileUtil.getParent(excelPath);
         Parameters.MODULE_NAME = FileUtil.getName(tempPath);
         tempPath = FileUtil.getParent(tempPath);
         Parameters.PROJECT_NAME = FileUtil.getName(tempPath);
@@ -307,4 +313,25 @@ public class ExcelData {
         return description;
     }
 
+    public void setExcelPath(String excelPath) {
+        this.excelPath = excelPath;
+    }
+
+    public Map<String, Integer> getCaseRowCount() {
+        Map<String, Integer> map = new HashMap<>();
+        if(excelBook != null) {
+            int sheetLen = excelBook.getNumberOfSheets();
+            for(int i=0;i<sheetLen;i++){
+                Sheet apiSheet = excelBook.getSheetAt(i);
+                String sheetName = apiSheet.getSheetName();
+                int apiSheetRows = apiSheet.getPhysicalNumberOfRows(); //获取物理行数
+                int caseRows = apiSheetRows - startRow;
+                logger.info("caseRows = "+caseRows);
+                map.put(sheetName, caseRows);
+            }
+        }else {
+            logger.error("excelBook = null");
+        }
+        return map;
+    }
 }

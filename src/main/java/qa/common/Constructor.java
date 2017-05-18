@@ -61,6 +61,7 @@ public class Constructor {
         String rspBody =  String.valueOf(o2);
         CheckList checkList = (CheckList) o3;
         ResponseInfo responseInfo = engine.getResponseInfo(httpClientUtil, allData, rspBody);
+        engine.log("responseBody:"+responseInfo.getContent());
         Map<String,Object> caseInfo = (Map<String, Object>) allData.get(Parameters.JSON_TEMPLATE_CASEINFO);
         responseBody = excelData.getResponseBody();
         engine.assertResult(caseInfo,responseInfo, responseBody,dataBaseUtil, checkList);

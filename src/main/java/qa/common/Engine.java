@@ -38,8 +38,10 @@ public class Engine {
         Map<String, String> headers = (Map<String, String>) map.get(Parameters.JSON_TEMPLATE_HEADERS);
         Map<String, String> wsInfo = (Map<String, String>) map.get(Parameters.JSON_TEMPLATE_WSINFO);
         String requestType = wsInfo.get(Parameters.JSON_TEMPLATE_HEADERS_REQUEST_TYPE);
+        log("url:"+wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL));
         if (requestType.equals(HttpRequestType.HTTP_REQUEST_POST)){
             // POST
+            log("requestBody:"+rspBody);
             responseInfo = httpClientUtil.executePostKeepConnWithHeaders(
                     wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
                     headers,
