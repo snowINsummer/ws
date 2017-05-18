@@ -49,7 +49,7 @@ public class AssertResult {
                 for(SqlCheckList sqlCheckList : checkList.getSqlCheckList()){
                     try {
                         String key = sqlCheckList.getKey();
-                        engine.log("需要验证字段：" + key);
+                        engine.logBold("需要验证字段：" + key);
                         String sql = sqlCheckList.getSql();
                         Object obj = JSONFormat.analyzeJsonExpression(JSONFormat.getObjectToJson(responseBody), key);
                         engine.logBold("实际结果：" + obj);
@@ -89,7 +89,7 @@ public class AssertResult {
             for(ResponseCheckList responseCheckList : checkList.getResponseCheckList()){
                 try {
                     String key = responseCheckList.getKey();
-                    engine.log("需要验证字段：" + key);
+                    engine.logBold("需要验证字段：" + key);
                     String value = responseCheckList.getValue();
                     Object obj = JSONFormat.analyzeJsonExpression(JSONFormat.getObjectToJson(responseBody), key);
                     String actualResult = String.valueOf(obj);

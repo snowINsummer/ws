@@ -106,6 +106,7 @@ public class ExcelData {
                         if (null == key){
                             break;
                         }else {
+                            String target = "${"+key+"}";
                             String value = getValue(apiSheet, j, i++);
                             if (null == value){
                                 value = "";
@@ -116,9 +117,11 @@ public class ExcelData {
                             }else if(RegExp.findCharacters(value,"^length\\(\\d+\\)$")){
                                 String str = RegExp.filterString(value,"length\\(\\)");
                                 value = StringUtil.createFixLenthString(Integer.parseInt(str));
-
+                            }else if(value.toLowerCase().equals("null")){
+                                value = "";
+                                target = key + "=" + target;
                             }
-                            singleJson = singleJson.replace("${"+key+"}",value);
+                            singleJson = singleJson.replace(target ,value);
                             setCheckList(checkList, key, value);
                         }
                     }
