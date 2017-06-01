@@ -42,7 +42,6 @@ public class ConstructorClass {
                     String createFilePath = rootPath + Parameters.PRODUCT_NAME + File.separator + Parameters.PROJECT_NAME +
                             File.separator + Parameters.MODULE_NAME + File.separator + className + ".java";
                     FileUtil.createFile(createFilePath);
-                    // TODO 写内容
                     String functionTemp = functionTemplateText;
                     String allFunctionText = "";
                     for(int i=1;i<=caseRowCount;i++){

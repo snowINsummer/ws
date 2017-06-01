@@ -1,20 +1,15 @@
-package qa.webservice.xxd.tiandun.integrationPlatform.bidsT;
+package qa.webservice.xxd.tiandun.integrationPlatform;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import qa.common.Constructor;
-import qa.httpClient.HttpClientUtil;
-import qa.httpClient.ResponseInfo;
 
 import java.io.IOException;
 import java.util.Iterator;
 
-/**
- * Created by zhangli on 17/5/2017.
- */
-public class bids {
+public class credits_cities {
 
     Constructor constructor;
 
@@ -33,11 +28,9 @@ public class bids {
         constructor.termination();
     }
 
+    
     @Test(dataProvider = "dp")
     public void case001(Object[] arrObj) throws Exception {
-        HttpClientUtil httpClientUtil = new HttpClientUtil();
-        ResponseInfo responseInfo = httpClientUtil.executeGet("http://dev.xxd.com/integrationPlatform/v2/api-docs");
-
         constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
     }
 
@@ -63,31 +56,6 @@ public class bids {
 
     @Test(dataProvider = "dp")
     public void case006(Object[] arrObj) throws Exception {
-        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
-    }
-
-    @Test(dataProvider = "dp")
-    public void case007(Object[] arrObj) throws Exception {
-        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
-    }
-
-    @Test(dataProvider = "dp")
-    public void case008(Object[] arrObj) throws Exception {
-        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
-    }
-
-    @Test(dataProvider = "dp")
-    public void case009(Object[] arrObj) throws Exception {
-        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
-    }
-
-    @Test(dataProvider = "dp")
-    public void case010(Object[] arrObj) throws Exception {
-        constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
-    }
-
-    @Test(dataProvider = "dp")
-    public void case011(Object[] arrObj) throws Exception {
         constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
     }
 
