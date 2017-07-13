@@ -8,10 +8,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import qa.Entity.CheckList;
-import qa.utils.FileUtil;
-import qa.utils.JSONFormat;
-import qa.utils.RegExp;
-import qa.utils.StringUtil;
+import qa.utils.*;
 
 import java.io.*;
 import java.util.*;
@@ -86,8 +83,12 @@ public class ExcelData {
                 int i=0;
                 while (true){
                     String key = getValue(apiSheet, 0, i);
-                    if (null == key){
+                    if (null == key) {
                         break;
+                    }else if(key.equals(Parameters.REQUEST_HEADERS_CLIENTTIME)){
+                        String value = String.valueOf(DateFormat.getCurrentTimeMillis());
+                        jsonTemplate = jsonTemplate.replace("${"+key+"}",value);
+                        i++;
                     }else {
                         String value = getValue(apiSheet, 1, i++);
                         if (null == value){
@@ -122,6 +123,8 @@ public class ExcelData {
                                 if (singleJson.contains(key + "=" + target)){
                                     target = key + "=" + target;
                                 }
+                            }else if(value.contains("[")){
+                                value = StringUtil.urlEncoderUTF8(value);
                             }
                             singleJson = singleJson.replace(target ,value);
                             setCheckList(checkList, key, value);

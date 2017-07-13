@@ -25,10 +25,10 @@ public class ConstructorClass {
     public void create(){
         ExcelData excelData = new ExcelData();
         try {
-            excelData.openExcelTestCase("testcase/XXD/TIANDUN/IntegrationPlatform/IntegrationPlatform.xlsx");
+            excelData.openExcelTestCase("testcase/XXD/TIANDUN/tradeCenter/tradeCenter.xlsx");
 //            excelData.setExcelPath("testcase/XXD/TIANDUN/IntegrationPlatform/IntegrationPlatform.xlsx");
-            excelData.initVar("testcase/XXD/TIANDUN/IntegrationPlatform/IntegrationPlatform.xlsx");
-            String classTemplateText = FileUtil.readFile("class-template/class.txt");
+            excelData.initVar("testcase/XXD/TIANDUN/tradeCenter/tradeCenter.xlsx");
+            String classTemplateText = FileUtil.readFile("class-template/class_TradeCenter.txt");
             String functionTemplateText = FileUtil.readFile("class-template/function.txt");
             if (classTemplateText.isEmpty()){
                 logger.error("classTemplateText is null");
@@ -39,8 +39,15 @@ public class ConstructorClass {
                     String className = entry.getKey();
                     String classText = classTemplateText.replace("${className}", className);
                     Integer caseRowCount = entry.getValue();
-                    String createFilePath = rootPath + Parameters.PRODUCT_NAME + File.separator + Parameters.PROJECT_NAME +
-                            File.separator + Parameters.MODULE_NAME + File.separator + className + ".java";
+                    String projectPath = rootPath + Parameters.PRODUCT_NAME + File.separator + Parameters.PROJECT_NAME;
+                    if (!FileUtil.exists(projectPath)){
+                        FileUtil.createFloder(projectPath);
+                    }
+                    String modulePath = projectPath + File.separator + Parameters.MODULE_NAME;
+                    if (!FileUtil.exists(modulePath)){
+                        FileUtil.createFloder(modulePath);
+                    }
+                    String createFilePath = modulePath + File.separator + className + ".java";
                     FileUtil.createFile(createFilePath);
                     String functionTemp = functionTemplateText;
                     String allFunctionText = "";

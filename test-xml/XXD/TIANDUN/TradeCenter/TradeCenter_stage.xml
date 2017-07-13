@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TradeCenter_WS">
+    <listeners>
+        <listener class-name="qa.common.Reporter" />
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <!--<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />-->
+    </listeners>
+
+    <test name="bids" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.bids" />
+        </classes>
+    </test>
+
+    <test name="bids_bidCode" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.bids_bidCode" />
+        </classes>
+    </test>
+
+    <test name="payGateAbandonedBidCallBack_bCo" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.payGateAbandonedBidCallBack_bCo" />
+        </classes>
+    </test>
+
+    <test name="statuses" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.statuses" />
+        </classes>
+    </test>
+
+    <test name="applyCode_loanAmount" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.applyCode_loanAmount" />
+        </classes>
+    </test>
+
+    <test name="bidCode_borrowerDetail" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.bidCode_borrowerDetail" />
+        </classes>
+    </test>
+
+    <test name="bidCode_investment" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.bidCode_investment" />
+        </classes>
+    </test>
+
+    <test name="bidCode_loanRecord" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.bidCode_loanRecord" />
+        </classes>
+    </test>
+
+    <test name="bidCode_repayment" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.bidCode_repayment" />
+        </classes>
+    </test>
+    <test name="products_productId" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.productType_staticResource" />
+        </classes>
+    </test>
+
+    <test name="batchDebit_terms" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.batchDebit_terms" />
+        </classes>
+    </test>
+
+    <test name="control_statuses" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.control_statuses" />
+        </classes>
+    </test>
+    <test name="repayment_schedule" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.repayment_schedule" />
+        </classes>
+    </test>
+    <test name="repayment_schedule" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.tradeCenter.loanIncreasement_statuses" />
+        </classes>
+    </test>
+
+</suite>
