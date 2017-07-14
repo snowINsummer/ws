@@ -36,6 +36,7 @@ public class Engine {
     public ResponseInfo getResponseInfo(HttpClientUtil httpClientUtil, Map<String, ?> map, String rspBody) throws HTTPException, RunException {
         ResponseInfo responseInfo = new ResponseInfo();
         Map<String, String> headers = (Map<String, String>) map.get(Parameters.JSON_TEMPLATE_HEADERS);
+        headers.put(Parameters.REQUEST_HEADERS_CLIENTTIME,String.valueOf(DateFormat.getCurrentTimeMillis()));
         Map<String, String> wsInfo = (Map<String, String>) map.get(Parameters.JSON_TEMPLATE_WSINFO);
         String requestType = wsInfo.get(Parameters.JSON_TEMPLATE_HEADERS_REQUEST_TYPE);
         log("url:"+wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL));

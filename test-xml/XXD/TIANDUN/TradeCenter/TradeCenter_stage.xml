@@ -82,7 +82,7 @@
             <class name="qa.webservice.xxd.tiandun.tradeCenter.repayment_schedule" />
         </classes>
     </test>
-    <test name="repayment_schedule" junit="false" annotations="JDK">
+    <test name="loanIncreasement_statuses" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.tradeCenter.loanIncreasement_statuses" />
         </classes>

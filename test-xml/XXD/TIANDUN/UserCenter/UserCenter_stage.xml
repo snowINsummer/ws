@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="UserCenter_WS">
+    <listeners>
+        <listener class-name="qa.common.Reporter" />
+        <listener class-name="org.uncommons.reportng.HTMLReporter" />
+        <!--<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />-->
+    </listeners>
+
+    <test name="capitalAccount_userInfo" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.capitalAccount_userInfo" />
+        </classes>
+    </test>
+
+    <test name="queryRealNameOpenAccountList" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.queryRealNameOpenAccountList" />
+        </classes>
+    </test>
+
+    <test name="queryUserStatus4eLoad" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.queryUserStatus4eLoad" />
+        </classes>
+    </test>
+
+    <test name="userInfoNotOpAcnt4eLoad" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userInfoNotOpAcnt4eLoad" />
+        </classes>
+    </test>
+
+    <test name="checkMobileIsUnique" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.checkMobileIsUnique" />
+        </classes>
+    </test>
+
+    <test name="queryMobileApproInfoByToken" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.queryMobileApproInfoByToken" />
+        </classes>
+    </test>
+
+    <test name="queryMobileApproInfoByUserId" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.queryMobileApproInfoByUserId" />
+        </classes>
+    </test>
+
+    <test name="queryPayLockedUsers" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.queryPayLockedUsers" />
+        </classes>
+    </test>
+
+    <test name="checkKaptcha" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.checkKaptcha" />
+        </classes>
+    </test>
+
+    <test name="realname" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.realname" />
+        </classes>
+    </test>
+
+    <test name="realnameStatus" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.realnameStatus" />
+        </classes>
+    </test>
+
+    <test name="getFuiouAppSignCardUrl" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.getFuiouAppSignCardUrl" />
+        </classes>
+    </test>
+
+    <test name="getSignedInfo" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.getSignedInfo" />
+        </classes>
+    </test>
+
+    <test name="getSignedInfoInSideUse" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.getSignedInfoInSideUse" />
+        </classes>
+    </test>
+
+    <test name="createToken" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.createToken" />
+        </classes>
+    </test>
+
+    <test name="getUserInfoByToken" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.getUserInfoByToken" />
+        </classes>
+    </test>
+
+    <test name="userDetail_userId" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userDetail_userId" />
+        </classes>
+    </test>
+
+    <test name="userDetailInfo" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userDetailInfo" />
+        </classes>
+    </test>
+
+
+    <test name="fundSyschronization" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.fundSyschronization" />
+        </classes>
+    </test>
+
+    <test name="userBandedBank" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userBandedBank" />
+        </classes>
+    </test>
+
+    <test name="userBandedBankOutSideUse" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userBandedBankOutSideUse" />
+        </classes>
+    </test>
+
+    <test name="userCheckingBankCardInfo" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userCheckingBankCardInfo" />
+        </classes>
+    </test>
+
+    <test name="beInLogging" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.beInLogging" />
+        </classes>
+    </test>
+
+    <test name="checkUsernameIsUnique" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.checkUsernameIsUnique" />
+        </classes>
+    </test>
+
+    <test name="userAccountInfo" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userAccountInfo" />
+        </classes>
+    </test>
+
+    <test name="user_userDetailInfo" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.user_userDetailInfo" />
+        </classes>
+    </test>
+
+    <test name="userEntrustWithdraw" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userEntrustWithdraw" />
+        </classes>
+    </test>
+
+    <test name="userInfo" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userInfo" />
+        </classes>
+    </test>
+
+    <test name="userInfoByLoginId" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userInfoByLoginId" />
+        </classes>
+    </test>
+
+    <test name="userInfoByToken" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.userInfoByToken" />
+        </classes>
+    </test>
+
+    <test name="getUsersByStatus" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.userCenter.getUsersByStatus" />
+        </classes>
+    </test>
+
+
+
+
+
+
+
+
+
+
+</suite>

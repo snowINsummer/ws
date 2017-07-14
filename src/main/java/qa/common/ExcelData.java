@@ -85,10 +85,10 @@ public class ExcelData {
                     String key = getValue(apiSheet, 0, i);
                     if (null == key) {
                         break;
-                    }else if(key.equals(Parameters.REQUEST_HEADERS_CLIENTTIME)){
-                        String value = String.valueOf(DateFormat.getCurrentTimeMillis());
-                        jsonTemplate = jsonTemplate.replace("${"+key+"}",value);
-                        i++;
+//                    }else if(key.equals(Parameters.REQUEST_HEADERS_CLIENTTIME)){
+//                        String value = String.valueOf(DateFormat.getCurrentTimeMillis());
+//                        jsonTemplate = jsonTemplate.replace("${"+key+"}",value);
+//                        i++;
                     }else {
                         String value = getValue(apiSheet, 1, i++);
                         if (null == value){
