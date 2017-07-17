@@ -1,0 +1,13 @@
+{
+  "code": "${code}",
+  "data": {
+    "totalCount": "${totalCount}",
+    "items": "${items}"
+  },
+  "header": {
+    "clientId": "${clientId}",
+    "serverSign": "${serverSign}",
+    "serverTime": "${serverTime}"
+  },
+  "message": "${message}"
+}
