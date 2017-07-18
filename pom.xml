@@ -27,11 +27,15 @@
             </properties>
         </profile>
         <profile>
+            <!-- integrationPlatform stage环境 -->
+            <id>integrationPlatform-stage</id>
+            <properties>
+                <environment.path>src/main/resources/integrationPlatform/stage.properties</environment.path>
+            </properties>
+        </profile>
+        <profile>
             <!-- tradeCenter stage环境 -->
             <id>tradeCenter-stage</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <environment.path>src/main/resources/tradeCenter/stage.properties</environment.path>
             </properties>
@@ -39,9 +43,6 @@
         <profile>
             <!-- userCenter stage环境 -->
             <id>userCenter-stage</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <environment.path>src/main/resources/userCenter/stage.properties</environment.path>
             </properties>

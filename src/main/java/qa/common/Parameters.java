@@ -11,6 +11,7 @@ public class Parameters {
     public static Properties prop = getProperties();
 
     public static String excelPath = prop.getProperty("excelPath");
+    public static String environment = prop.getProperty("environment");
     public static String oracleUrl = prop.getProperty("oracleUrl");
     public static String oracleUserName = prop.getProperty("oracleUserName");
     public static String oraclePassword = prop.getProperty("oraclePassword");
@@ -29,6 +30,7 @@ public class Parameters {
     public static final String JSON_TEMPLATE_CASEINFO_SQL = "sql";
     public static final String JSON_TEMPLATE_WSINFO = "wsInfo";
     public static final String JSON_TEMPLATE_WSINFO_URL = "url";
+    public static final String JSON_TEMPLATE_WSINFO_ENVIRONMENT = "environment";
     public static int JSON_MAP_TYPE = 0;
     public static int JSON_LIST_TYPE = 1;
 

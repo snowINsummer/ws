@@ -67,7 +67,7 @@ public class ExcelData {
     }
 
     private void getExcelData(String className, String classFullPath) throws Exception {
-        initVar("");
+        initVar(this.excelPath);
         setJsonTemplateFilePath(classFullPath);
         openExcelTestCase(this.excelPath);
 
@@ -85,9 +85,9 @@ public class ExcelData {
                     String key = getValue(apiSheet, 0, i);
                     if (null == key) {
                         break;
-//                    }else if(key.equals(Parameters.REQUEST_HEADERS_CLIENTTIME)){
-//                        String value = String.valueOf(DateFormat.getCurrentTimeMillis());
-//                        jsonTemplate = jsonTemplate.replace("${"+key+"}",value);
+//                    }else if(key.equals(Parameters.JSON_TEMPLATE_WSINFO_URL)){
+//                        String value = Parameters.environment;
+//                        jsonTemplate = jsonTemplate.replace("${"+Parameters.JSON_TEMPLATE_WSINFO_ENVIRONMENT+"}",value);
 //                        i++;
                     }else {
                         String value = getValue(apiSheet, 1, i++);
@@ -97,6 +97,8 @@ public class ExcelData {
                         jsonTemplate = jsonTemplate.replace("${"+key+"}",value);
                     }
                 }
+                String environment = Parameters.environment;
+                jsonTemplate = jsonTemplate.replace("${"+Parameters.JSON_TEMPLATE_WSINFO_ENVIRONMENT+"}",environment);
                 int apiSheetRows = apiSheet.getPhysicalNumberOfRows(); //获取物理行数
                 for(int j=startRow;j<apiSheetRows;j++){
                     CheckList checkList = new CheckList();
@@ -203,9 +205,12 @@ public class ExcelData {
     public void initVar(String excelPath) {
         // 根据xml路径解析项目信息，而不是根据excel路径，可能是一对多
 //        String fileName = FileUtil.getName(this.excelPath);
-        if (excelPath.isEmpty()){
+        if (!Parameters.SUITE_XML_FILE_PATH.isEmpty()){
             excelPath = Parameters.SUITE_XML_FILE_PATH;
         }
+//        if (excelPath.isEmpty()){
+//            excelPath = Parameters.SUITE_XML_FILE_PATH;
+//        }
         String fileName = FileUtil.getName(excelPath);
         Parameters.TESTCASE_EXCEL_NAME = fileName.split("\\.")[0];
 //        String tempPath = FileUtil.getParent(this.excelPath);
