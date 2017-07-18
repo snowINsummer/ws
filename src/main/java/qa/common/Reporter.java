@@ -127,7 +127,7 @@ public class Reporter extends ReportNGUtils implements IReporter {
         String batchNo = date; // batchNo
         Result result = new Result();
         ResultData resultData = new ResultData();
-        resultData.setCaseType("1");
+//        resultData.setCaseType("1");
         resultData.setProductName(Parameters.PRODUCT_NAME);
         resultData.setProjectName(Parameters.PROJECT_NAME);
         resultData.setModuleName(Parameters.MODULE_NAME);
@@ -194,6 +194,7 @@ public class Reporter extends ReportNGUtils implements IReporter {
 
 
         String json = JSONFormat.getObjectToJson(result);
+        logger.info("json:\n"+json);
         HttpClientUtil httpClientUtil = new HttpClientUtil();
         Map<String,String> header = new HashMap<>();
         header.put("Content-Type", "application/json");
