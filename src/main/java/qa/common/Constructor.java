@@ -31,7 +31,6 @@ public class Constructor {
 
     public Constructor(String classFullPath) throws Exception {
         if (null == excelPath || excelPath.isEmpty()) throw new Exception("excelPath异常：excelPath=" + excelPath);
-        System.out.println("============"+excelPath);
         engine = new Engine();
         httpClientUtil = new HttpClientUtil();
         dataBaseUtil = new DataBaseUtil(Parameters.oracleUrl,Parameters.oracleUserName,Parameters.oraclePassword);
