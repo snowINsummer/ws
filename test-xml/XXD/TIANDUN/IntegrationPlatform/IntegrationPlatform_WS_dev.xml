@@ -2,77 +2,86 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="IntegrationPlatform_WS_dev">
     <listeners>
-        <listener class-name="qa.common.Reporter" />
+        <!--<listener class-name="qa.common.Reporter" />-->
         <listener class-name="org.uncommons.reportng.HTMLReporter" />
         <!--<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />-->
     </listeners>
-
-
     <test name="bids" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.bids" />
         </classes>
     </test>
-    <test name="bids_bidCode" junit="false" annotations="JDK">
-        <classes>
-            <class name="qa.webservice.xxd.tiandun.integrationPlatform.bids_bidCode" />
-        </classes>
-    </test>
-    <test name="credits_cities" junit="false" annotations="JDK">
-        <classes>
-            <class name="qa.webservice.xxd.tiandun.integrationPlatform.credits_cities" />
-        </classes>
-    </test>
+        <test name="bids_bidCode" junit="false" annotations="JDK">
+            <classes>
+                <class name="qa.webservice.xxd.tiandun.integrationPlatform.bids_bidCode" />
+            </classes>
+        </test>
+
+        <test name="credits_cities" junit="false" annotations="JDK">
+            <classes>
+                <class name="qa.webservice.xxd.tiandun.integrationPlatform.credits_cities" />
+            </classes>
+        </test>
+
+
     <test name="credits_cities_cityCode" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.credits_cities_cityCode" />
         </classes>
     </test>
+    <!--改动比较大，暂时注释
     <test name="files_GET" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.files_GET" />
         </classes>
     </test>
+    改动比较大，暂时注释-->
+
     <test name="forms_applyCode" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.forms_applyCode" />
         </classes>
     </test>
-    <test name="forms_userId_productId" junit="false" annotations="JDK">
-        <classes>
-            <class name="qa.webservice.xxd.tiandun.integrationPlatform.forms_userId_productId" />
-        </classes>
-    </test>
+
     <test name="instalmentPlans_productId" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.instalmentPlans_productId" />
         </classes>
     </test>
+
     <test name="products" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.products" />
         </classes>
     </test>
+
     <test name="products_productId" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.products_productId" />
         </classes>
     </test>
+
     <test name="receipts" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.receipts" />
         </classes>
     </test>
+
+
     <test name="receipts_applyCode" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.receipts_applyCode" />
         </classes>
     </test>
+
+
     <test name="receipts_applyCode_contracts" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.receipts_applyCode_contracts" />
         </classes>
     </test>
+
+
     <test name="receipts_contracts_contractNo" junit="false" annotations="JDK">
         <classes>
             <class name="qa.webservice.xxd.tiandun.integrationPlatform.receipts_contracts_contractNo" />
