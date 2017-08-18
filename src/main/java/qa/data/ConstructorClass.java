@@ -25,10 +25,10 @@ public class ConstructorClass {
     public void create(){
         ExcelData excelData = new ExcelData();
         try {
-            excelData.openExcelTestCase("testcase/XXD/TIANDUN/userCenter/userCenter.xlsx");
+            excelData.openExcelTestCase("testcase/XXD/TIANDUN/fileCenter/fileCenter.xlsx");
 //            excelData.setExcelPath("testcase/XXD/TIANDUN/IntegrationPlatform/IntegrationPlatform.xlsx");
-            excelData.initVar("testcase/XXD/TIANDUN/userCenter/userCenter.xlsx");
-            String classTemplateText = FileUtil.readFile("class-template/class_UserCenter.txt");
+            excelData.initVar("testcase/XXD/TIANDUN/fileCenter/fileCenter.xlsx");
+            String classTemplateText = FileUtil.readFile("class-template/class_FileCenter.txt");
             String functionTemplateText = FileUtil.readFile("class-template/function.txt");
             if (classTemplateText.isEmpty()){
                 logger.error("classTemplateText is null");

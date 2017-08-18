@@ -205,9 +205,9 @@ public class ExcelData {
     public void initVar(String excelPath) {
         // 根据xml路径解析项目信息，而不是根据excel路径，可能是一对多
 //        String fileName = FileUtil.getName(this.excelPath);
-        if (!Parameters.SUITE_XML_FILE_PATH.isEmpty()){
-            excelPath = Parameters.SUITE_XML_FILE_PATH;
-        }
+//        if (!Parameters.SUITE_XML_FILE_PATH.isEmpty()){
+//            excelPath = Parameters.SUITE_XML_FILE_PATH;
+//        }
 //        if (excelPath.isEmpty()){
 //            excelPath = Parameters.SUITE_XML_FILE_PATH;
 //        }

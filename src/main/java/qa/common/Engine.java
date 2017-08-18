@@ -40,6 +40,14 @@ public class Engine {
         Map<String, String> wsInfo = (Map<String, String>) map.get(Parameters.JSON_TEMPLATE_WSINFO);
         String requestType = wsInfo.get(Parameters.JSON_TEMPLATE_HEADERS_REQUEST_TYPE);
         log("url:"+wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL));
+
+        String type = wsInfo.get(Parameters.JSON_TEMPLATE_HEADERS_REQUEST_TYPE);
+        if (type.equals(HttpRequestType.HTTP_REQUEST_GET)){
+            rspBody = "";
+        }
+        String newS = getClientSign(httpClientUtil,headers,rspBody);
+        headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
+
         if (requestType.equals(HttpRequestType.HTTP_REQUEST_POST)){
             // POST
             log("requestBody:"+rspBody);
@@ -47,16 +55,16 @@ public class Engine {
                     wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
                     headers,
                     rspBody);
-            Map<String,String> temp = JSONFormat.getMapFromJson(responseInfo.getContent());
-            if (temp.get(Parameters.RESPONES_BODY_CODE).equals(Parameters.RESPONES_BODY_CODE_INVALID_SIGN)){
-                // 如果code=200407 ，调用/demo/createClientSign 获取sign值
-                String newS = getClientSign(httpClientUtil,headers,rspBody);
-                headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
-                responseInfo = httpClientUtil.executePostKeepConnWithHeaders(
-                        wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
-                        headers,
-                        rspBody);
-            }
+//            Map<String,String> temp = JSONFormat.getMapFromJson(responseInfo.getContent());
+//            if (temp.get(Parameters.RESPONES_BODY_CODE).equals(Parameters.RESPONES_BODY_CODE_INVALID_SIGN)){
+//                // 如果code=200407 ，调用/demo/createClientSign 获取sign值
+//                String newS = getClientSign(httpClientUtil,headers,rspBody);
+//                headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
+//                responseInfo = httpClientUtil.executePostKeepConnWithHeaders(
+//                        wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
+//                        headers,
+//                        rspBody);
+//            }
         }else if(requestType.equals(HttpRequestType.HTTP_REQUEST_GET)){
             // GET
             responseInfo = httpClientUtil.executeGetKeepConnWithHeaders(
@@ -68,32 +76,32 @@ public class Engine {
                     wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
                     headers,
                     rspBody);
-            Map<String,String> temp = JSONFormat.getMapFromJson(responseInfo.getContent());
-            if (temp.get(Parameters.RESPONES_BODY_CODE).equals(Parameters.RESPONES_BODY_CODE_INVALID_SIGN)){
-                // 如果code=200407 ，调用/demo/createClientSign 获取sign值
-                String newS = getClientSign(httpClientUtil,headers,rspBody);
-                headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
-                responseInfo = httpClientUtil.executePutKeepConnWithHeaders(
-                        wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
-                        headers,
-                        rspBody);
-            }
+//            Map<String,String> temp = JSONFormat.getMapFromJson(responseInfo.getContent());
+//            if (temp.get(Parameters.RESPONES_BODY_CODE).equals(Parameters.RESPONES_BODY_CODE_INVALID_SIGN)){
+//                // 如果code=200407 ，调用/demo/createClientSign 获取sign值
+//                String newS = getClientSign(httpClientUtil,headers,rspBody);
+//                headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
+//                responseInfo = httpClientUtil.executePutKeepConnWithHeaders(
+//                        wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
+//                        headers,
+//                        rspBody);
+//            }
         }else if(requestType.equals(HttpRequestType.HTTP_REQUEST_PATCH)){
             // PATCH
             responseInfo = httpClientUtil.executePatchKeepConnWithHeaders(
                     wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
                     headers,
                     rspBody);
-            Map<String,String> temp = JSONFormat.getMapFromJson(responseInfo.getContent());
-            if (temp.get(Parameters.RESPONES_BODY_CODE).equals(Parameters.RESPONES_BODY_CODE_INVALID_SIGN)){
-                // 如果code=200407 ，调用/demo/createClientSign 获取sign值
-                String newS = getClientSign(httpClientUtil,headers,rspBody);
-                headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
-                responseInfo = httpClientUtil.executePatchKeepConnWithHeaders(
-                        wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
-                        headers,
-                        rspBody);
-            }
+//            Map<String,String> temp = JSONFormat.getMapFromJson(responseInfo.getContent());
+//            if (temp.get(Parameters.RESPONES_BODY_CODE).equals(Parameters.RESPONES_BODY_CODE_INVALID_SIGN)){
+//                // 如果code=200407 ，调用/demo/createClientSign 获取sign值
+//                String newS = getClientSign(httpClientUtil,headers,rspBody);
+//                headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
+//                responseInfo = httpClientUtil.executePatchKeepConnWithHeaders(
+//                        wsInfo.get(Parameters.JSON_TEMPLATE_WSINFO_URL),
+//                        headers,
+//                        rspBody);
+//            }
         }
 
         return responseInfo;
@@ -206,12 +214,15 @@ public class Engine {
      */
     public String getClientSign(HttpClientUtil httpClientUtil, Map<String, String> headers, String rspBody) throws HTTPException, RunException {
         log("获取sign...");
+        String environment = Parameters.environment;
+
         Map<String, String> map = new HashMap<>();
         String clientId = headers.get(Parameters.REQUEST_HEADERS_CLIENTID);
         String clientTime = headers.get(Parameters.REQUEST_HEADERS_CLIENTTIME);
         map.put(Parameters.REQUEST_HEADERS_CLIENTID, clientId);
         map.put(Parameters.REQUEST_HEADERS_CLIENTTIME, clientTime);
-        String url = "http://dev.xxd.com/integrationPlatform/demo/createClientSign?client_id="+clientId+"&client_time="+clientTime+"&client_key=123456&bodyString="+ StringUtil.urlEncoderUTF8(rspBody);
+        String url = "http://"+environment+".xxd.com/userCenter/demo/createClientSign?client_id="+clientId+"&client_time="+clientTime+"&client_key=123456&bodyString="+ StringUtil.urlEncoderUTF8(rspBody);
+        log(url);
         ResponseInfo responseInfo = httpClientUtil.executeGetKeepConnWithHeaders(url,map);
         log("sign="+responseInfo.getContent());
         return responseInfo.getContent();
