@@ -35,6 +35,8 @@ public class Parameters {
     public static int JSON_LIST_TYPE = 1;
 
     public static final String JSON_TEMPLATE_HEADERS_S = "s";
+    public static final String JSON_TEMPLATE_HEADERS_CONTENT_TYPE = "Content-Type";
+    public static final String JSON_TEMPLATE_HEADERS_TOKEN = "token";
 
     public static final String RESPONES_BODY_CODE = "code";
     public static final String RESPONES_BODY_CODE_SUCCESS = "200000";

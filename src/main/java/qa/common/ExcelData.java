@@ -140,12 +140,13 @@ public class ExcelData {
                         requestBody.add("");
                     }
 //                    singleJson = singleJson.replaceAll("\"body\".*\\}","");
-
+//                    System.out.println(JSONFormat.getObjectToJson(requestBody));
                     Map map = JSONFormat.getMapFromJson(singleJson);
                     description.add(map.get(Parameters.JSON_TEMPLATE_DESCRIPTION).toString());
                     map.remove(Parameters.JSON_TEMPLATE_BODY); // 删除body
                     map.remove(Parameters.JSON_TEMPLATE_DESCRIPTION); // 删除description
                     caseInfo.add(map);
+
                     this.checkList.add(checkList);
                 }
             }else {

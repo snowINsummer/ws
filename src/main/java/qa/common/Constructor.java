@@ -6,6 +6,7 @@ import qa.exception.RunException;
 import qa.httpClient.HttpClientUtil;
 import qa.httpClient.ResponseInfo;
 import qa.utils.DataBaseUtil;
+import qa.utils.JSONFormat;
 
 import java.util.*;
 
@@ -39,6 +40,7 @@ public class Constructor {
         rspBody = excelData.getRequestBody();
         checkList = excelData.getCheckList();
         description = excelData.getDescription();
+//        System.out.println(JSONFormat.getObjectToJson(rspBody));
     }
 
     public void termination(){

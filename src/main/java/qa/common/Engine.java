@@ -10,6 +10,7 @@ import qa.httpClient.ResponseInfo;
 import qa.utils.*;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +35,7 @@ public class Engine {
      * @throws RunException
      */
     public ResponseInfo getResponseInfo(HttpClientUtil httpClientUtil, Map<String, ?> map, String rspBody) throws HTTPException, RunException {
+//        log(JSONFormat.getObjectToJson(map));
         ResponseInfo responseInfo = new ResponseInfo();
         Map<String, String> headers = (Map<String, String>) map.get(Parameters.JSON_TEMPLATE_HEADERS);
         headers.put(Parameters.REQUEST_HEADERS_CLIENTTIME,String.valueOf(DateFormat.getCurrentTimeMillis()));
@@ -45,9 +47,27 @@ public class Engine {
         if (type.equals(HttpRequestType.HTTP_REQUEST_GET)){
             rspBody = "";
         }
-        String newS = getClientSign(httpClientUtil,headers,rspBody);
-        headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
+//        log(JSONFormat.getObjectToJson(headers));
 
+        if (headers.get(Parameters.JSON_TEMPLATE_HEADERS_S).equals("null")){
+            headers.remove(Parameters.JSON_TEMPLATE_HEADERS_S);
+        }else {
+            String newS = getClientSign(httpClientUtil, headers, rspBody);
+            headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
+        }
+        if (headers.get(Parameters.JSON_TEMPLATE_HEADERS_CONTENT_TYPE).equals("null")){
+            headers.remove(Parameters.JSON_TEMPLATE_HEADERS_CONTENT_TYPE);
+        }
+        if (headers.get(Parameters.JSON_TEMPLATE_HEADERS_TOKEN).equals("null")){
+            headers.remove(Parameters.JSON_TEMPLATE_HEADERS_TOKEN);
+        }
+
+//        log(rspBody);
+//        log(String.valueOf(rspBody.toString().equals("")));
+//        log(String.valueOf(rspBody.toString().isEmpty()));
+//        log(String.valueOf("".isEmpty()));
+//        log(String.valueOf("".equals("")));
+//        log(JSONFormat.getObjectToJson(map));
         if (requestType.equals(HttpRequestType.HTTP_REQUEST_POST)){
             // POST
             log("requestBody:"+rspBody);
@@ -130,6 +150,10 @@ public class Engine {
      */
     private void insertResponseBody(Map<String, Object> responseBody, String content) {
         try {
+            if (!content.startsWith("{")){
+                return;
+            }
+//            System.out.println(content);
             Map map = JSONFormat.getMapFromJson(content);
             for (Map.Entry<String, ?> entry : responseBody.entrySet()) {
                 String value = String.valueOf(entry.getValue());
@@ -141,12 +165,15 @@ public class Engine {
                         responseBody.put(key, null);
                     }
                 } else {
-                    Map<String, Object> mapT = (Map<String, Object>) responseBody.get(key);
-                    insertResponseBody(mapT, JSONFormat.getObjectToJson(map.get(key)));
+                    if (map.containsKey(key)){
+                        Map<String, Object> mapT = (Map<String, Object>) responseBody.get(key);
+                        insertResponseBody(mapT, JSONFormat.getObjectToJson(map.get(key)));
+                    }
                 }
             }
         }catch (Exception e) {
-            logRed(e.getMessage());
+            logRed(this.getClass().getName()+"  "+e.getMessage());
+            e.printStackTrace();
         }
     }
 
