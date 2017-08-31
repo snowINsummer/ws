@@ -39,12 +39,12 @@ public class receipts_applyCode {
         constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
     }
 
-    @Test(dataProvider = "dp")
+//    @Test(dataProvider = "dp")
     public void case003(Object[] arrObj) throws Exception {
         constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
     }
 
-    @Test(dataProvider = "dp")
+//    @Test(dataProvider = "dp")
     public void case004(Object[] arrObj) throws Exception {
         constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
     }

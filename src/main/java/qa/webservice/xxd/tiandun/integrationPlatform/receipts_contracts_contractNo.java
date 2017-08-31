@@ -39,7 +39,7 @@ public class receipts_contracts_contractNo {
         constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
     }
 
-    @Test(dataProvider = "dp")
+//    @Test(dataProvider = "dp")
     public void case003(Object[] arrObj) throws Exception {
         constructor.executeCase(arrObj[0],arrObj[1],arrObj[2],arrObj[3]);
     }
