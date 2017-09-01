@@ -49,17 +49,23 @@ public class Engine {
         }
 //        log(JSONFormat.getObjectToJson(headers));
 
-        if (headers.get(Parameters.JSON_TEMPLATE_HEADERS_S).equals("null")){
-            headers.remove(Parameters.JSON_TEMPLATE_HEADERS_S);
-        }else {
-            String newS = getClientSign(httpClientUtil, headers, rspBody);
-            headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
+        if (headers.containsKey(Parameters.JSON_TEMPLATE_HEADERS_S)){
+            if (headers.get(Parameters.JSON_TEMPLATE_HEADERS_S).equals("null")){
+                headers.remove(Parameters.JSON_TEMPLATE_HEADERS_S);
+            }else {
+                String newS = getClientSign(httpClientUtil, headers, rspBody);
+                headers.put(Parameters.JSON_TEMPLATE_HEADERS_S, newS);
+            }
         }
-        if (headers.get(Parameters.JSON_TEMPLATE_HEADERS_CONTENT_TYPE).equals("null")){
-            headers.remove(Parameters.JSON_TEMPLATE_HEADERS_CONTENT_TYPE);
+        if (headers.containsKey(Parameters.JSON_TEMPLATE_HEADERS_CONTENT_TYPE)) {
+            if (headers.get(Parameters.JSON_TEMPLATE_HEADERS_CONTENT_TYPE).equals("null")){
+                headers.remove(Parameters.JSON_TEMPLATE_HEADERS_CONTENT_TYPE);
+            }
         }
-        if (headers.get(Parameters.JSON_TEMPLATE_HEADERS_TOKEN).equals("null")){
-            headers.remove(Parameters.JSON_TEMPLATE_HEADERS_TOKEN);
+        if (headers.containsKey(Parameters.JSON_TEMPLATE_HEADERS_TOKEN)) {
+            if (headers.get(Parameters.JSON_TEMPLATE_HEADERS_TOKEN).equals("null")){
+                headers.remove(Parameters.JSON_TEMPLATE_HEADERS_TOKEN);
+            }
         }
 
 //        log(rspBody);

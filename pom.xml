@@ -68,6 +68,13 @@
                 <environment.path>src/main/resources/payGate/dev.properties</environment.path>
             </properties>
         </profile>
+        <profile>
+            <!-- approvingSystem test环境 -->
+            <id>approvingSystem-test</id>
+            <properties>
+                <environment.path>src/main/resources/approvingSystem/test.properties</environment.path>
+            </properties>
+        </profile>
     </profiles>
 
     <build>

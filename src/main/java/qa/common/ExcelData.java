@@ -126,16 +126,19 @@ public class ExcelData {
                                     target = key + "=" + target;
                                 }
                             }else if(value.contains("[")){
-                                value = StringUtil.urlEncoderUTF8(value);
+                                if (!singleJson.contains("POST")){
+                                    value = StringUtil.urlEncoderUTF8(value);
+                                }
                             }
                             singleJson = singleJson.replace(target ,value);
                             setCheckList(checkList, key, value);
                         }
                     }
+
                     // 获取body，请求报文 (?<=body":).*?\}(?=,)
-                    ArrayList<String> list = RegExp.matcherCharacters(singleJson, "(?<=body\":).*");
+                    ArrayList<String> list = RegExp.matcherCharacters(singleJson, "(?<=body\":)(.*\\S\\s)+[^\n]");
                     if (list.size() > 0){
-                        requestBody.add(list.get(0));
+                        requestBody.add(list.get(0).substring(0,list.get(0).length()-1));
                     }else {
                         requestBody.add("");
                     }

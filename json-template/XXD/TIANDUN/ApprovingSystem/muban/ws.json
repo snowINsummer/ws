@@ -1,0 +1,14 @@
+{
+  "wsInfo":{
+    "url":"${url}",
+    "Request-Tyoe":"${Request-Tyoe}"
+  },
+  "headers":{
+    "Content-Type":"${Content-Type}"
+  },
+  "description":"${description}",
+  "body":{
+    "header":${header},
+    "body":${body}
+  }
+}
