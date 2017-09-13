@@ -89,4 +89,16 @@
             <class name="qa.webservice.xxd.tiandun.payGate.getReconciliAtionList_POST" />
         </classes>
     </test>
+
+    <test name="getSyncList_POST" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.payGate.getSyncList_POST" />
+        </classes>
+    </test>
+
+    <test name="manualRollback_POST" junit="false" annotations="JDK">
+        <classes>
+            <class name="qa.webservice.xxd.tiandun.payGate.manualRollback_POST" />
+        </classes>
+    </test>
 </suite>

@@ -1,0 +1,18 @@
+{
+  "wsInfo":{
+    "url":"${url}",
+    "Request-Tyoe":"${Request-Tyoe}"
+  },
+  "headers":{
+    "Content-Type":"${Content-Type}",
+    "clientId":"${clientId}",
+    "clientTime":"${clientTime}",
+    "s":"${s}",
+    "token":"${token}"
+  },
+  "description":"${description}",
+  "body":{
+    "data":{
+    }
+  }
+}
