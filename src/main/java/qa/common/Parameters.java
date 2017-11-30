@@ -50,7 +50,7 @@ public class Parameters {
     public static final String REQUEST_HEADERS_CLIENTID = "clientId";
     public static final String REQUEST_HEADERS_CLIENTTIME = "clientTime";
 
-    public static final String Tyrant_Service_IP = prop.getProperty("Tyrant_Service_IP","172.16.15.88:8080/tyrant");;
+    public static final String Tyrant_Service_IP = prop.getProperty("Tyrant_Service_IP","192.168.33.47/tyrant");;
 
     public static final String SUITE_XML_FILE_PATH = prop.getProperty("suiteXmlFilePath","");
 
